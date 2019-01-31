@@ -3,13 +3,13 @@
         <h1>Inscription</h1>
         <input
             type="email"
-            name="email"
+            name="Email"
             v-model="email"
             placeholder="email" />
         <br>
         <input
             type="password"
-            name="password"
+            name="Password"
             v-model="password"
             placeholder="mot de passe" />
         <br>
@@ -22,11 +22,13 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+
 export default {
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: null
     }
   },
   methods: {
