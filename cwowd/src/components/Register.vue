@@ -3,15 +3,17 @@
         <h1>Inscription</h1>
         <input
             type="email"
-            name="Email"
+            name="email"
             v-model="email"
             placeholder="email" />
         <br>
         <input
             type="password"
-            name="Password"
+            name="password"
             v-model="password"
             placeholder="mot de passe" />
+        <br>
+        <div class="error" v-html="error" />
         <br>
         <button
           @click="register">
@@ -33,11 +35,14 @@ export default {
   },
   methods: {
     async register () {
-      const response = await AuthenticationService.register({
-        email: this.email,
-        password: this.password
-      })
-      console.log(response.data)
+      try {
+        await AuthenticationService.register({
+          email: this.email,
+          password: this.password
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+      }
     }
   }
 }
@@ -45,4 +50,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.error {
+  color: red;
+}
 </style>
