@@ -1,8 +1,8 @@
 <template>
-  <v-layout column>
-    <v-flex xs6 offset-xs3>
+  <v-container fluid column>
+    <v-flex xs8 offset-xs2>
       <div class="white elevation-2">
-        <v-toolbar flat dense class="cyan">
+        <v-toolbar flat dense class="cyan" dark>
           <v-toolbar-title>Inscription</v-toolbar-title>
         </v-toolbar>
 
@@ -26,7 +26,7 @@
         </div>
       </div>
     </v-flex>
-  </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -60,6 +60,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-  color: red;
+  color: white;
 }
 </style>
