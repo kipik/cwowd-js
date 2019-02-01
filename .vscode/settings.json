@@ -1,3 +1,11 @@
 {
-    "editor.fontFamily": "Consolas, 'Verdana', monospace"
+    "editor.fontFamily": "Consolas, 'Verdana', monospace",
+    "eslint.autoFixOnSave": true,
+    "eslint.run": "onSave",
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "prettier.bracketSpacing": false,
+    "prettier.eslintIntegration": true,
+    "prettier.singleQuote": true,
+    "prettier.stylelintIntegration": true
 }

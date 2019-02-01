@@ -86,6 +86,7 @@
 <script>
 export default {
   name: 'HelloWorld',
+  // eslint-disable-next-line
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
