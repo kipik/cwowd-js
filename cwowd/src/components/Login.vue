@@ -14,10 +14,11 @@
           <br>
           <v-text-field
             label="Mot de passe"
+            type="password"
             v-model="password">
           </v-text-field>
           <br>
-          <div class="error" v-html="error" />
+          <div class="danger-alert" v-html="error" />
           <br>
           <v-btn dark class="cyan"
             @click="login">
@@ -45,7 +46,7 @@ export default {
     // eslint-disable-next-line
     async login () {
       try {
-        await AuthenticationService.login({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
@@ -59,7 +60,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.error {
-  color: white;
-}
 </style>

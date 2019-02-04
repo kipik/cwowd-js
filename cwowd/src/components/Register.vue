@@ -7,17 +7,21 @@
         </v-toolbar>
 
         <div class="pl-4 pr-4 pt-2 pb-2">
-          <v-text-field
-            label="Email"
-            v-model="email">
-          </v-text-field>
+        <form name="cwowd-log-form" autocomplete="off">
+            <v-text-field
+              label="Email"
+              v-model="email">
+            </v-text-field>
+            <br>
+            <v-text-field
+              label="Mot de passe"
+              type="password"
+              v-model="password"
+              autocomplete="new-password">
+            </v-text-field>
+          </form>
           <br>
-          <v-text-field
-            label="Mot de passe"
-            v-model="password">
-          </v-text-field>
-          <br>
-          <div class="error" v-html="error" />
+          <div class="danger-alert" v-html="error" />
           <br>
           <v-btn dark class="cyan"
             @click="register">
@@ -45,7 +49,7 @@ export default {
     // eslint-disable-next-line
     async register () {
       try {
-        await AuthenticationService.register({
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
