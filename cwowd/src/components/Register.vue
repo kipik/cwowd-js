@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 <template>
   <v-container fluid column>
     <v-flex xs8 offset-xs2>
@@ -53,7 +55,10 @@ export default {
           email: this.email,
           password: this.password
         })
-      } catch (error) {
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
+      }
+      catch (error) {
         this.error = error.response.data.error
       }
     }

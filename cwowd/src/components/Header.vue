@@ -7,10 +7,12 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
-            <v-btn flat dark to="register">
+            <v-btn v-if="!$store.state.isUserLoggedIn"
+                flat dark to="register">
                 Inscription
             </v-btn>
-            <v-btn flat dark to="login">
+            <v-btn v-if="!$store.state.isUserLoggedIn"
+                flat dark to="login">
                 Connexion
             </v-btn>
         </v-toolbar-items>
