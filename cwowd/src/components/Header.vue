@@ -7,6 +7,9 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
+            <v-btn flat dark to="jeux">
+                Base Jeux
+            </v-btn>
             <v-btn v-if="!$store.state.isUserLoggedIn"
                 flat dark to="register">
                 Inscription
