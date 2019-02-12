@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex xs7>
         <panel title="Nouveau jeu">
-          <v-text-field label="Titre" required v-model="game.title"></v-text-field>
+          <v-text-field label="Titre *" :rules="[required]" v-model="game.title"></v-text-field>
           <v-text-field label="Editeur" v-model="game.editor"></v-text-field>
           <v-text-field label="Auteur" v-model="game.designer"></v-text-field>
           <v-text-field label="Artiste" v-model="game.artist"></v-text-field>
@@ -44,7 +44,8 @@ export default {
         dateEndKS: null,
         langue: null,
         lienKS: null
-      }
+      },
+      required: value => !!value || "Obligatoire."
     };
   },
   methods: {
