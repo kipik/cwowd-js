@@ -4,26 +4,20 @@
   <v-container fluid column>
     <v-flex xs8 offset-xs2>
       <panel title="Inscription">
-        <form name="cwowd-log-form" autocomplete="off">
-          <v-text-field
-            label="Email"
-            v-model="email">
-          </v-text-field>
+        <form name="register-form">
+          <v-text-field label="Email" v-model="email" autocomplete="username"></v-text-field>
           <br>
           <v-text-field
             label="Mot de passe"
             type="password"
             v-model="password"
-            autocomplete="new-password">
-          </v-text-field>
+            autocomplete="new-password"
+          ></v-text-field>
         </form>
         <br>
-        <div class="danger-alert" v-html="error" />
+        <div class="danger-alert" v-html="error"/>
         <br>
-        <v-btn dark class="cyan"
-          @click="register">
-          Je valide
-        </v-btn>
+        <v-btn dark class="cyan" @click="register">Je valide</v-btn>
       </panel>
     </v-flex>
   </v-container>
@@ -60,7 +54,7 @@ export default {
   components: {
     Panel
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

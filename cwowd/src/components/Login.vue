@@ -2,23 +2,13 @@
   <v-container fluid column>
     <v-flex xs8 offset-xs2>
       <panel title="Connexion">
-        <v-text-field
-          label="Email"
-          v-model="email">
-        </v-text-field>
+        <v-text-field label="Email" v-model="email" autocomplete="username"></v-text-field>
         <br>
-        <v-text-field
-          label="Mot de passe"
-          type="password"
-          v-model="password">
-        </v-text-field>
+        <v-text-field label="Mot de passe" type="password" v-model="password"></v-text-field>
         <br>
-        <div class="danger-alert" v-html="error" />
+        <div class="danger-alert" v-html="error"/>
         <br>
-        <v-btn dark class="cyan"
-          @click="login">
-          Je me connecte
-        </v-btn>
+        <v-btn dark class="cyan" @click="login">Je me connecte</v-btn>
       </panel>
     </v-flex>
   </v-container>
@@ -49,7 +39,6 @@ export default {
         console.log(token)
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
-
       } catch (error) {
         this.error = error.response.data.error
       }
@@ -58,7 +47,7 @@ export default {
   components: {
     Panel
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
