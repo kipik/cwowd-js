@@ -3,17 +3,13 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
+import Games from '@/components/Games'
+import CreateGame from '@/components/CreateGame'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   routes: [
-    {
-      path: '/',
-      name: 'root',
-      component: HelloWorld
-    },
     {
       path: '/root',
       name: 'root',
@@ -28,6 +24,16 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/games',
+      name: 'games',
+      component: Games
+    },
+    {
+      path: '/games/create',
+      name: 'game-create',
+      component: CreateGame
     }
   ]
 })

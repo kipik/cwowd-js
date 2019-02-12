@@ -89,7 +89,7 @@ export default {
   // eslint-disable-next-line
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Bienvenue sur cwowd'
     }
   }
 }
