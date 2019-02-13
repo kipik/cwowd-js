@@ -24,30 +24,33 @@
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
-import Panel from '@/components/Panel'
+import AuthenticationService from "@/services/AuthenticationService";
+import Panel from "@/components/Panel";
 
 export default {
   // eslint-disable-next-line
-  data () {
+  data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       error: null
-    }
+    };
   },
   methods: {
     // eslint-disable-next-line
-    async register () {
+    async register() {
       try {
         const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
-        })
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
+        });
+        this.$store.dispatch("setToken", response.data.token);
+        this.$store.dispatch("setUser", response.data.user);
+        this.$router.push({
+          name: "games"
+        });
       } catch (error) {
-        this.error = error.response.data.error
+        this.error = error.response.data.error;
       }
     }
   },

@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex xs7>
         <panel title="Nouveau jeu">
-          <v-text-field label="Titre *" :rules="[required]" v-model="game.title"></v-text-field>
+          <v-text-field label="Titre *" required :rules="[required]" v-model="game.title"></v-text-field>
           <v-text-field label="Editeur" v-model="game.editor"></v-text-field>
           <v-text-field label="Auteur" v-model="game.designer"></v-text-field>
           <v-text-field label="Artiste" v-model="game.artist"></v-text-field>
@@ -19,7 +19,7 @@
           <v-text-field label="Langue" v-model="game.langue"></v-text-field>
           <v-text-field label="Lien vers la page KS" v-model="game.lienKS"></v-text-field>
         </panel>
-        <v-btn dark class="cyan" @click="create">Valider</v-btn>
+        <v-btn dark class="cyan" @click="create">Ajouter</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
@@ -45,6 +45,7 @@ export default {
         langue: null,
         lienKS: null
       },
+      error: null,
       required: value => !!value || "Obligatoire."
     };
   },

@@ -3,7 +3,7 @@
     <v-flex xs8 offset-xs2>
       <panel title="Jeux">
         <v-btn
-          slot="addGame"
+          slot="PanelAction"
           class="cyan accent-3"
           fab
           small

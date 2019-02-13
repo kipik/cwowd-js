@@ -4,7 +4,7 @@ module.exports = {
   async index (req, res) {
     try {
       const games = await Game.findAll({
-        limit: 10
+        limit: 30
       })
       res.send(games)
     } catch (err) {

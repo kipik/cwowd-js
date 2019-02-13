@@ -9,6 +9,7 @@ import CreateGame from '@/components/CreateGame'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/root',
@@ -34,6 +35,10 @@ export default new Router({
       path: '/games/create',
       name: 'game-create',
       component: CreateGame
+    },
+    {
+      path: '*',
+      redirect: 'games'
     }
   ]
 })
