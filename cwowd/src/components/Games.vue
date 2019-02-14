@@ -19,7 +19,7 @@
             <v-flex v-for="game in games" :key="game.id">
               <v-card>
                 <v-layout row>
-                  <v-flex xs7 >
+                  <v-flex xs8>
                     <v-card-title>
                       <div>
                         <div class="headline">{{game.title}}</div>
@@ -28,12 +28,21 @@
                       </div>
                     </v-card-title>
                   </v-flex>
-                  <v-flex xs5>
+                  <v-flex xs4>
                     <v-img class="game_cover" :src="game.imageUrl" height="125px" contain></v-img>
                   </v-flex>
                 </v-layout>
                 <v-card-actions class="primary white--text">
-                  <v-btn flat dark>En savoir plus</v-btn>
+                  <v-btn
+                    flat
+                    dark
+                    :to="({
+                      name: 'game-view', 
+                      params: {
+                        gameId: game.id
+                      }
+                    })"
+                  >En savoir plus</v-btn>
                   <v-spacer></v-spacer>
                   <v-btn icon flat dark>
                     <v-icon>favorite</v-icon>
