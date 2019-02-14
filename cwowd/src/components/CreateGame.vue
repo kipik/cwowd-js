@@ -6,7 +6,7 @@
           <v-text-field label="Titre" v-model="game.title" required :rules="[required]"></v-text-field>
           <v-text-field label="Editeur" v-model="game.editor" required :rules="[required]"></v-text-field>
           <v-text-field label="Auteur" v-model="game.designer" required :rules="[required]"></v-text-field>
-          <v-text-field label="Artiste" v-model="game.artist" ></v-text-field>
+          <v-text-field label="Artiste" v-model="game.artist"></v-text-field>
           <v-text-field label="Photo du jeu" v-model="game.imageUrl" required :rules="[required]"></v-text-field>
           <v-textarea label="Résumé du jeu" v-model="game.description" required :rules="[required]"></v-textarea>
         </panel>

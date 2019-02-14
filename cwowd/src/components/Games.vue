@@ -19,21 +19,23 @@
             <v-flex v-for="game in games" :key="game.id">
               <v-card>
                 <v-layout row>
-                  <v-flex xs8>
+                  <v-flex xs7>
                     <v-card-title>
                       <div>
                         <div class="headline">{{game.title}}</div>
-                        <div class="game_designer">{{game.designer}}</div>
-                        <div class="game_editor">{{game.editor}}</div>
+                        <div class="game_designer">de {{game.designer}}</div>
+                        <div class="game_editor">par {{game.editor}}</div>
+                        <div class="ks_resume">sur {{game.plateforme}} jusqu'au {{game.dateEndKS}}</div>
                       </div>
                     </v-card-title>
                   </v-flex>
-                  <v-flex xs4>
+                  <v-flex xs5>
                     <v-img class="game_cover" :src="game.imageUrl" height="125px" contain></v-img>
                   </v-flex>
                 </v-layout>
                 <v-card-actions class="primary white--text">
                   <v-btn
+                    small
                     flat
                     dark
                     :to="({
@@ -45,13 +47,13 @@
                   >En savoir plus</v-btn>
                   <v-spacer></v-spacer>
                   <v-btn icon flat dark>
-                    <v-icon>favorite</v-icon>
+                    <v-icon small>favorite</v-icon>
                   </v-btn>
                   <v-btn icon flat dark>
-                    <v-icon>bookmark</v-icon>
+                    <v-icon small>bookmark</v-icon>
                   </v-btn>
                   <v-btn icon flat dark>
-                    <v-icon>share</v-icon>
+                    <v-icon small>share</v-icon>
                   </v-btn>
                 </v-card-actions>
               </v-card>
@@ -83,4 +85,7 @@ export default {
 </script>
 
 <style scoped>
+.ks_resume {
+  font-size: 12px;
+}
 </style>

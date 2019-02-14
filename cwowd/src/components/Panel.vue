@@ -1,13 +1,12 @@
 <template>
-  <v-container fluid column>
-    <v-flex xs12 sm6>
+  <v-container fluid>
+    <v-flex xs10>
       <div class="white elevation-2">
         <v-toolbar flat dense class="cyan" dark>
           <v-toolbar-title>{{title}}</v-toolbar-title>
           <slot name="PanelAction"/>
         </v-toolbar>
-          <slot></slot>
-        </div>
+        <slot></slot>
       </div>
     </v-flex>
   </v-container>
