@@ -3,22 +3,38 @@
     <v-layout>
       <v-flex xs7>
         <panel title="Nouveau jeu">
-          <v-text-field label="Titre *" required :rules="[required]" v-model="game.title"></v-text-field>
-          <v-text-field label="Editeur" v-model="game.editor"></v-text-field>
-          <v-text-field label="Auteur" v-model="game.designer"></v-text-field>
-          <v-text-field label="Artiste" v-model="game.artist"></v-text-field>
-          <v-text-field label="Photo du jeu" v-model="game.imageUrl"></v-text-field>
-          <v-textarea label="Résumé du jeu" v-model="game.description"></v-textarea>
+          <v-text-field label="Titre" v-model="game.title" required :rules="[required]"></v-text-field>
+          <v-text-field label="Editeur" v-model="game.editor" required :rules="[required]"></v-text-field>
+          <v-text-field label="Auteur" v-model="game.designer" required :rules="[required]"></v-text-field>
+          <v-text-field label="Artiste" v-model="game.artist" ></v-text-field>
+          <v-text-field label="Photo du jeu" v-model="game.imageUrl" required :rules="[required]"></v-text-field>
+          <v-textarea label="Résumé du jeu" v-model="game.description" required :rules="[required]"></v-textarea>
         </panel>
       </v-flex>
       <v-flex xs5>
         <panel title="Détails du KS">
-          <v-text-field label="Plateforme" v-model="game.plateforme"></v-text-field>
-          <v-text-field label="Début de la campagne" v-model="game.dateStartKS"></v-text-field>
-          <v-text-field label="Fin de la campagne" v-model="game.dateEndKS"></v-text-field>
-          <v-text-field label="Langue" v-model="game.langue"></v-text-field>
-          <v-text-field label="Lien vers la page KS" v-model="game.lienKS"></v-text-field>
+          <v-text-field label="Plateforme" v-model="game.plateforme" required :rules="[required]"></v-text-field>
+          <v-text-field
+            label="Début de la campagne"
+            v-model="game.dateStartKS"
+            required
+            :rules="[required]"
+          ></v-text-field>
+          <v-text-field
+            label="Fin de la campagne"
+            v-model="game.dateEndKS"
+            required
+            :rules="[required]"
+          ></v-text-field>
+          <v-text-field label="Langue" v-model="game.langue" required :rules="[required]"></v-text-field>
+          <v-text-field
+            label="Lien vers la page KS"
+            v-model="game.lienKS"
+            required
+            :rules="[required]"
+          ></v-text-field>
         </panel>
+        <v-alert class="ml-4" :value="error" transition="scale-transition" error>{{error}}</v-alert>
         <v-btn dark class="cyan" @click="create">Ajouter</v-btn>
       </v-flex>
     </v-layout>
@@ -51,6 +67,12 @@ export default {
   },
   methods: {
     async create() {
+      this.error = null;
+      const allFilled = Object.keys(this.game).every(key => !!this.game[key]);
+      if (!allFilled) {
+        this.error = "Merci de renseigner tous les champs.";
+        return;
+      }
       try {
         await GamesService.post(this.game);
         this.$router.push({
