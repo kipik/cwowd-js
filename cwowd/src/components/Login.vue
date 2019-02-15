@@ -15,37 +15,33 @@
 </template>
 
 <script>
-import AuthenticationService from '@/services/AuthenticationService'
-import Panel from '@/components/Panel'
+import AuthenticationService from "@/services/AuthenticationService";
 
 export default {
   // eslint-disable-next-line
-  data () {
+  data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       error: null
-    }
+    };
   },
   methods: {
     // eslint-disable-next-line
-    async login () {
+    async login() {
       try {
         const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
-        })
-        const token = response.data.token
-        console.log(token)
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
+        });
+        const token = response.data.token;
+        console.log(token);
+        this.$store.dispatch("setToken", response.data.token);
+        this.$store.dispatch("setUser", response.data.user);
       } catch (error) {
-        this.error = error.response.data.error
+        this.error = error.response.data.error;
       }
     }
-  },
-  components: {
-    Panel
   }
 };
 </script>

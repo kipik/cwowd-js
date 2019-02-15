@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import Panel from "@/components/Panel";
 import GamesService from "@/services/GamesService";
 
 export default {
@@ -106,9 +105,6 @@ export default {
       console.log(err);
     }
   },
-  components: {
-    Panel
-  }
 };
 </script>
 

@@ -25,7 +25,6 @@
 
 <script>
 import AuthenticationService from "@/services/AuthenticationService";
-import Panel from "@/components/Panel";
 
 export default {
   // eslint-disable-next-line
@@ -53,9 +52,6 @@ export default {
         this.error = error.response.data.error;
       }
     }
-  },
-  components: {
-    Panel
   }
 };
 </script>
