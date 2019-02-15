@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-flex xs10>
+    <v-flex xs10 offset-xs1>
       <div class="white elevation-2">
         <v-toolbar flat dense class="cyan" dark>
           <v-toolbar-title>{{title}}</v-toolbar-title>

@@ -1,23 +1,24 @@
 <template>
   <v-layout justify-center>
     <panel title="Jeux">
-      <v-btn
-        slot="PanelAction"
-        class="cyan accent-3"
-        fab
-        small
-        dark
-        absolute
-        right
-        :to="{name:'game-create'}"
-      >
-        <v-icon>add</v-icon>
-      </v-btn>
-      <v-card>
-        <v-container fluid grid-list-lg>
+      <v-card class="pt-2">
+        <v-container fluid grid-list-xl>
+          <v-btn
+            slot="PanelAction"
+            color="cyan accent-3"
+            fab
+            small
+            dark
+            absolute
+            right
+            top
+            :to="{name:'game-create'}"
+          >
+            <v-icon>add</v-icon>
+          </v-btn>
           <v-layout row wrap>
             <v-flex v-for="game in games" :key="game.id">
-              <v-card>
+              <v-card xs12>
                 <v-layout row>
                   <v-flex xs7>
                     <v-card-title>

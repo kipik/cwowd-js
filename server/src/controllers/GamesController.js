@@ -1,4 +1,6 @@
-const { Game } = require('../models')
+const {
+  Game
+} = require('../models')
 
 module.exports = {
   async index (req, res) {
@@ -30,6 +32,20 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: 'Erreur : impossible de créer la fiche jeu.'
+      })
+    }
+  },
+  async put (req, res) {
+    try {
+      await Game.update(req.body, {
+        where: {
+          id: req.params.gameId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(500).send({
+        error: 'Erreur : impossible de mettre à jour la fiche jeu.'
       })
     }
   }

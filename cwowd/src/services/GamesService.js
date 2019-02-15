@@ -11,5 +11,8 @@ export default {
   },
   post(game) {
     return Api().post('games', game)
+  },
+  put(game) {
+    return Api().put(`games/${game.id}`, game)
   }
 }

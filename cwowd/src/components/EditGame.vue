@@ -2,8 +2,8 @@
   <v-container>
     <v-layout>
       <v-flex xs7>
-        <panel title="Nouveau jeu">
-          <v-flex class="pa-3">
+        <panel title="Modifier une fiche jeu">
+          <v-flex pa-3>
             <v-text-field label="Titre" v-model="game.title" required :rules="[required]"></v-text-field>
             <v-text-field label="Editeur" v-model="game.editor" required :rules="[required]"></v-text-field>
             <v-text-field label="Auteur" v-model="game.designer" required :rules="[required]"></v-text-field>
@@ -20,7 +20,7 @@
       </v-flex>
       <v-flex xs5>
         <panel title="Détails du KS">
-          <v-flex class="pa-3">
+          <v-flex pa-3>
             <v-text-field label="Plateforme" v-model="game.plateforme" required :rules="[required]"></v-text-field>
             <v-text-field
               label="Début de la campagne"
@@ -44,7 +44,7 @@
           </v-flex>
         </panel>
         <v-alert class="ml-4" :value="error" transition="scale-transition" error>{{error}}</v-alert>
-        <v-btn dark class="cyan" @click="create">Ajouter</v-btn>
+        <v-btn dark class="cyan" @click="save">Enregistrer</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
@@ -75,21 +75,35 @@ export default {
     };
   },
   methods: {
-    async create() {
+    async save() {
       this.error = null;
       const allFilled = Object.keys(this.game).every(key => !!this.game[key]);
       if (!allFilled) {
         this.error = "Merci de renseigner tous les champs.";
         return;
       }
+      const gameId = this.$store.state.route.params.gameId;
+
       try {
-        await GamesService.post(this.game);
-        this.$router.push({
-          name: "games"
-        });
+        await GamesService.put(this.game);
+        this.$router.go(-1);
+        /* this.$router.push({
+          name: "game",
+          params: {
+            gameId: gameId
+          } 
+        });*/
       } catch (err) {
         console.log(err);
       }
+    }
+  },
+  async mounted() {
+    try {
+      const gameId = this.$store.state.route.params.gameId;
+      this.game = (await GamesService.show(gameId)).data;
+    } catch (err) {
+      console.log(err);
     }
   },
   components: {

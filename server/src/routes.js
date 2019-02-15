@@ -12,6 +12,6 @@ module.exports = app => {
 
   app.get('/games', GamesController.index)
   app.get('/games/:gameId', GamesController.show)
-
   app.post('/games', GamesController.post)
+  app.put('/games/:gameId', GamesController.put)
 }

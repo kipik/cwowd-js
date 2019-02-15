@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Games from '@/components/Games'
 import CreateGame from '@/components/CreateGame'
 import ViewGame from '@/components/ViewGame'
+import EditGame from '@/components/EditGame'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
     path: '/games/:gameId',
     name: 'game-view',
     component: ViewGame
+  },
+  {
+    path: '/games/:gameId/edit',
+    name: 'game-edit',
+    component: EditGame
   },
   {
     path: '*',
