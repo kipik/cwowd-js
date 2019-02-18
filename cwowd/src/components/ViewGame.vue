@@ -12,10 +12,11 @@
           absolute
           right
           :to="{
-            name:'game-edit',
-            params: {
+            name: 'game-edit',
+            params () {
+              return {
               gameId: game.id
-          }}"
+          }}}"
         >
           <v-icon>edit</v-icon>
         </v-btn>

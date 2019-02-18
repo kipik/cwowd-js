@@ -38,6 +38,9 @@ export default {
         console.log(token);
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.user);
+        this.$router.push({
+          name: "games"
+        });
       } catch (error) {
         this.error = error.response.data.error;
       }
