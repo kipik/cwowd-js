@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import _ from "lodash";
 export default {
   data() {
     return {
@@ -14,7 +15,7 @@ export default {
     };
   },
   watch: {
-    search(value) {
+    search: _.debounce(async function(value) {
       const route = {
         path: "games"
       };
@@ -24,7 +25,7 @@ export default {
         };
       }
       if (this.$route.name === "games") this.$router.push(route);
-    },
+    }, 600),
     "$route.query.search": {
       immediate: true,
       handler(value) {
