@@ -5,9 +5,25 @@ const {
 module.exports = {
   async index (req, res) {
     try {
-      const games = await Game.findAll({
-        limit: 20
-      })
+      let games = null
+      const search = req.query.search
+      if (search) {
+        games = await Game.findAll({
+          where: {
+            $or: [
+              'title', 'designer', 'artist', 'editor'
+            ].map(key => ({
+              [key]: {
+                $like: `%${search}%`
+              }
+            }))
+          }
+        })
+      } else {
+        games = await Game.findAll({
+          limit: 20
+        })
+      }
       res.send(games)
     } catch (err) {
       res.status(500).send({

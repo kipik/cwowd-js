@@ -75,6 +75,14 @@ export default {
   },
   async mounted() {
     this.games = (await GamesService.index()).data;
+  },
+  watch: {
+    "$route.query.search": {
+      immediate: true,
+      async handler(value) {
+        this.games = (await GamesService.index(value)).data;
+      }
+    }
   }
 };
 </script>

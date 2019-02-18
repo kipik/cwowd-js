@@ -2,8 +2,12 @@ import Api from '@/services/Api'
 
 export default {
   // eslint-disable-next-line
-  index() {
-    return Api().get('games')
+  index(search) {
+    return Api().get('games', {
+      params: {
+        search: search
+      }
+    })
   },
   show(gameId) {
     // return Api().get('games/"+gameId+"')
