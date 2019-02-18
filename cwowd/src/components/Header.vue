@@ -2,7 +2,7 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
     <v-toolbar-title class="mr-4">
-      <v-btn flat dark :to="{name:'root'}">cwowd</v-btn>
+      <v-btn flat dark :to="{name: 'games'}">cwowd</v-btn>
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
@@ -21,7 +21,7 @@ export default {
       this.$store.dispatch("setToken", null);
       this.$store.dispatch("setUser", null);
       this.$router.push({
-        name: "root"
+        name: "games"
       });
     }
   }
