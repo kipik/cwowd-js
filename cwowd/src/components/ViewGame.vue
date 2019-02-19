@@ -29,7 +29,44 @@
           </v-flex>
           <v-img class="game_cover" :src="game.imageUrl" height="200px" contain></v-img>
         </v-layout>
+
         <div class="game_body pa-3">{{game.description}}</div>
+        <v-btn
+          small
+          color="cyan accent-3"
+          error
+          left
+          :to="{
+            name: 'game-edit',
+            params () {
+              return {
+              gameId: game.id
+          }}}"
+        >
+          <v-icon>edit</v-icon>
+        </v-btn>
+        <v-btn
+          v-show="isUserLoggedIn && !bookmark"
+          fab
+          small
+          color="cyan accent-3"
+          error
+          left
+          @click="bookmarkThis"
+        >
+          <v-icon>favorite_border</v-icon>
+        </v-btn>
+        <v-btn
+          v-show="isUserLoggedIn && bookmark"
+          fab
+          small
+          color="cyan accent-3"
+          error
+          left
+          @click="unMarkThis"
+        >
+          <v-icon>favorite</v-icon>
+        </v-btn>
       </panel>
     </v-flex>
     <v-flex xs4>
@@ -49,16 +86,57 @@
 
 <script>
 import GamesService from "@/services/GamesService";
+import { mapState } from "vuex";
+import BookmarksService from "@/services/BookmarksService";
 
 export default {
   data() {
     return {
-      game: {}
+      game: {},
+      bookmark: null
     };
+  },
+  computed: {
+    ...mapState(["isUserLoggedIn"])
   },
   async mounted() {
     const gameId = this.$store.state.route.params.gameId;
     this.game = (await GamesService.show(gameId)).data;
+  },
+  watch: {
+    async game() {
+      if (!this.isUserLoggedIn) {
+        return;
+      }
+      try {
+        this.bookmark = (await BookmarksService.index({
+          gameId: this.game.id,
+          userId: this.$store.state.user.id
+        })).data;
+      } catch (err) {
+        console.log("err");
+      }
+    }
+  },
+  methods: {
+    async bookmarkThis() {
+      try {
+        this.bookmark = (await BookmarksService.post({
+          gameId: this.game.id,
+          userId: this.$store.state.user.id
+        })).data;
+      } catch (err) {
+        console.log("err");
+      }
+    },
+    async unMarkThis() {
+      try {
+        await BookmarksService.delete(this.bookmark.id);
+        this.bookmark = null;
+      } catch (err) {
+        console.log("err");
+      }
+    }
   }
 };
 </script>
