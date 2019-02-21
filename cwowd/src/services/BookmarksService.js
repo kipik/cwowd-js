@@ -1,7 +1,6 @@
 import Api from '@/services/Api'
 
 export default {
-  // eslint-disable-next-line
   index(bookmark) {
     return Api().get('bookmarks', {
       params: bookmark

@@ -32,20 +32,6 @@
 
         <div class="game_body pa-3">{{game.description}}</div>
         <v-btn
-          small
-          color="cyan accent-3"
-          error
-          left
-          :to="{
-            name: 'game-edit',
-            params () {
-              return {
-              gameId: game.id
-          }}}"
-        >
-          <v-icon>edit</v-icon>
-        </v-btn>
-        <v-btn
           v-show="isUserLoggedIn && !bookmark"
           fab
           small
@@ -88,6 +74,7 @@
 import GamesService from "@/services/GamesService";
 import { mapState } from "vuex";
 import BookmarksService from "@/services/BookmarksService";
+import HistoryService from "@/services/HistoryService";
 
 export default {
   data() {
@@ -97,11 +84,18 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isUserLoggedIn"])
+    ...mapState(["isUserLoggedIn", "user", "route"])
   },
   async mounted() {
-    const gameId = this.$store.state.route.params.gameId;
+    const gameId = this.route.params.gameId;
     this.game = (await GamesService.show(gameId)).data;
+
+    if (this.isUserLoggedIn) {
+      HistoryService.post({
+        gameId: gameId,
+        userId: this.user.id
+      });
+    }
   },
   watch: {
     async game() {
@@ -109,10 +103,12 @@ export default {
         return;
       }
       try {
-        this.bookmark = (await BookmarksService.index({
-          gameId: this.game.id,
-          userId: this.$store.state.user.id
+        const bookmarks = (await BookmarksService.index({
+          gameId: this.game.id
         })).data;
+        if (bookmarks.length) {
+          this.bookmark = bookmarks[0];
+        }
       } catch (err) {
         console.log("err");
       }
@@ -122,8 +118,7 @@ export default {
     async bookmarkThis() {
       try {
         this.bookmark = (await BookmarksService.post({
-          gameId: this.game.id,
-          userId: this.$store.state.user.id
+          gameId: this.game.id
         })).data;
       } catch (err) {
         console.log("err");

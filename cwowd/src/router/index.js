@@ -4,7 +4,7 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Games from '@/components/Games/Index'
 import CreateGame from '@/components/CreateGame'
-import ViewGame from '@/components/ViewGame'
+import ViewGame from '@/components/ViewGame/Index'
 import EditGame from '@/components/EditGame'
 
 Vue.use(Router)

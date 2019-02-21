@@ -1,7 +1,7 @@
 <template>
   <panel title="Chercher un jeu">
     <v-flex class="ml-5 mr-5">
-      <v-text-field label="Reherche par jeu, auteur, artiste ou éditeur" v-model="search"></v-text-field>
+      <v-text-field label="Recherche par titre, auteur, artiste ou éditeur" v-model="search"></v-text-field>
     </v-flex>
   </panel>
 </template>
