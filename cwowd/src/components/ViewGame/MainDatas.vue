@@ -4,6 +4,7 @@
     <panel title="Fiche jeu">
       <v-btn
         slot="PanelAction"
+        v-show="isUserLoggedIn"
         fab
         small
         color="cyan accent-3"
