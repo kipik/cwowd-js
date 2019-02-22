@@ -6,14 +6,20 @@
     <v-flex xs4>
       <panel title="Kickstarter">
         <v-layout column class="pa-5">
-          <div class="plateforme">Sur {{game.plateforme}}</div>
-          <div class="date-ks">Du {{game.dateStartKS}}</div>
-          <div class="date-ks">Au {{game.dateEndKS}}</div>
-          <div class="game_langue">Jeu en {{game.langue}}</div>
-          <v-btn flat :to="game.lienKS">Lien KS</v-btn>
-          <!-- A corriger, ne link pas -->
+          <v-flex>
+            <div class="plateforme">Sur {{game.plateforme}}</div>
+            <div class="date-ks">Du {{game.dateStartKS}}</div>
+            <div class="date-ks">Au {{game.dateEndKS}}</div>
+            <div class="game_langue">Jeu en {{game.langue}}</div>
+            <v-btn flat :to="game.lienKS">Lien KS</v-btn>
+            <!-- A corriger, ne link pas -->
+          </v-flex>
         </v-layout>
       </panel>
+        <v-flex v-show="isUserLoggedIn">
+          <bookmarks/>
+          <recent-views/>
+        </v-flex>
     </v-flex>
   </v-layout>
 </template>
@@ -23,6 +29,8 @@ import { mapState } from "vuex";
 import MainDatas from "./MainDatas";
 import GamesService from "@/services/GamesService";
 import HistoryService from "@/services/HistoryService";
+import Bookmarks from "../Games/Bookmarks";
+import RecentViews from "../Games/RecentViews";
 
 export default {
   data() {
@@ -36,7 +44,7 @@ export default {
   async mounted() {
     const gameId = this.route.params.gameId;
     this.game = (await GamesService.show(gameId)).data;
-    
+
     if (this.isUserLoggedIn) {
       HistoryService.post({
         gameId: gameId
@@ -44,7 +52,9 @@ export default {
     }
   },
   components: {
-    MainDatas
+    MainDatas,
+    Bookmarks,
+    RecentViews
   } //,
   /* watch: {
     async game() {
