@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import GamesPanel from "./GamesPanel";
-import SearchPanel from "./SearchPanel";
-import GamesService from "@/services/GamesService";
+import GamesPanel from './GamesPanel'
+import SearchPanel from './SearchPanel'
+import GamesService from '@/services/GamesService'
 
 export default {
   components: {
@@ -20,12 +20,12 @@ export default {
   data() {
     return {
       games: null
-    };
+    }
   },
   async mounted() {
-    this.games = (await GamesService.index()).data;
+    this.games = (await GamesService.index()).data
   }
-};
+}
 </script>
 
 <style scoped>

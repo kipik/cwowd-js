@@ -12,44 +12,45 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  routes: [{
-    path: '/register',
-    name: 'register',
-    component: Register
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
-  },
-  {
-    path: '/games',
-    name: 'games',
-    component: Games
-  },
-  {
-    path: '/games/create',
-    name: 'game-create',
-    component: CreateGame
-  },
+  routes: [
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/games',
+      name: 'games',
+      component: Games
+    },
+    {
+      path: '/games/create',
+      name: 'game-create',
+      component: CreateGame
+    },
     /* {
       path: '/games/addgame',
       name: 'games-add',
       component: AddGame
     }, */
-  {
-    path: '/games/:gameId',
-    name: 'game-view',
-    component: ViewGame
-  },
-  {
-    path: '/games/:gameId/edit',
-    name: 'game-edit',
-    component: EditGame
-  },
-  {
-    path: '*',
-    redirect: 'games'
-  }
+    {
+      path: '/games/:gameId',
+      name: 'game-view',
+      component: ViewGame
+    },
+    {
+      path: '/games/:gameId/edit',
+      name: 'game-edit',
+      component: EditGame
+    },
+    {
+      path: '*',
+      redirect: 'games'
+    }
   ]
 })

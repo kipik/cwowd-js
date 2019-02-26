@@ -24,16 +24,10 @@
                 @input="$v.name.$touch()"
                 @blur="$v.name.$touch()"
               ></v-text-field>
-              <v-text-field label="Auteur" v-model="game.designer"</v-text-field>
+              <v-text-field label="Auteur" v-model="game.designer"></v-text-field>
               <v-text-field label="Artiste" v-model="game.artist"></v-text-field>
-              <v-text-field
-                label="Photo du jeu"
-                v-model="game.imageUrl"
-              ></v-text-field>
-              <v-textarea
-                label="Résumé du jeu"
-                v-model="game.description"
-              ></v-textarea>
+              <v-text-field label="Photo du jeu" v-model="game.imageUrl"></v-text-field>
+              <v-textarea label="Résumé du jeu" v-model="game.description"></v-textarea>
             </v-form>
           </v-flex>
         </panel>
@@ -71,7 +65,7 @@
 </template>
 
 <script>
-import GamesService from "@/services/GamesService";
+import GamesService from '@/services/GamesService'
 
 export default {
   data() {
@@ -90,28 +84,28 @@ export default {
         lienKS: null
       },
       error: null,
-      required: value => !!value || "Obligatoire."
-    };
+      required: value => !!value || 'Obligatoire.'
+    }
   },
   methods: {
     async create() {
-      this.error = null;
-      const allFilled = Object.keys(this.game).every(key => !!this.game[key]);
+      this.error = null
+      const allFilled = Object.keys(this.game).every(key => !!this.game[key])
       if (!allFilled) {
-        this.error = "Merci de renseigner tous les champs.";
-        return;
+        this.error = 'Merci de renseigner tous les champs.'
+        return
       }
       try {
-        await GamesService.post(this.game);
+        await GamesService.post(this.game)
         this.$router.push({
-          name: "games"
-        });
+          name: 'games'
+        })
       } catch (err) {
-        console.log(err);
+        console.log(err)
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>

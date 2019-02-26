@@ -3,8 +3,8 @@
     <v-flex xs10 offset-xs1>
       <div class="white elevation-2">
         <v-toolbar flat dense class="cyan" dark>
-          <v-toolbar-title>{{title}}</v-toolbar-title>
-          <slot name="PanelAction"/>
+          <v-toolbar-title>{{ title }}</v-toolbar-title>
+          <slot name="PanelAction" />
         </v-toolbar>
         <slot></slot>
       </div>
@@ -14,9 +14,8 @@
 
 <script>
 export default {
-  props: ["title"]
-};
+  props: ['title']
+}
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

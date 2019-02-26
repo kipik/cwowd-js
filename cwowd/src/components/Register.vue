@@ -5,8 +5,12 @@
     <v-flex xs8 offset-xs2>
       <panel title="Inscription">
         <form name="register-form">
-          <v-text-field label="Email" v-model="email" autocomplete="username"></v-text-field>
-          <br>
+          <v-text-field
+            label="Email"
+            v-model="email"
+            autocomplete="username"
+          ></v-text-field>
+          <br />
           <v-text-field
             label="Mot de passe"
             type="password"
@@ -14,9 +18,9 @@
             autocomplete="new-password"
           ></v-text-field>
         </form>
-        <br>
-        <div class="danger-alert" v-html="error"/>
-        <br>
+        <br />
+        <div class="danger-alert" v-html="error" />
+        <br />
         <v-btn dark class="cyan" @click="register">Je valide</v-btn>
       </panel>
     </v-flex>
@@ -24,16 +28,16 @@
 </template>
 
 <script>
-import AuthenticationService from "@/services/AuthenticationService";
+import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
   // eslint-disable-next-line
   data() {
     return {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       error: null
-    };
+    }
   },
   methods: {
     // eslint-disable-next-line
@@ -42,18 +46,18 @@ export default {
         const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
-        });
-        this.$store.dispatch("setToken", response.data.token);
-        this.$store.dispatch("setUser", response.data.user);
+        })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
         this.$router.push({
-          name: "games"
-        });
+          name: 'games'
+        })
       } catch (error) {
-        this.error = error.response.data.error;
+        this.error = error.response.data.error
       }
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

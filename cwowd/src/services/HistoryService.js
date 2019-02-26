@@ -1,7 +1,6 @@
 import Api from '@/services/Api'
 
 export default {
-  // eslint-disable-next-line
   index(params) {
     return Api().get('histories', {
       params: params

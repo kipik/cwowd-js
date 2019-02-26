@@ -11,7 +11,7 @@
           absolute
           right
           top
-          :to="{name:'game-create'}"
+          :to="{ name: 'game-create' }"
         >
           <v-icon>add</v-icon>
         </v-btn>
@@ -22,15 +22,22 @@
                 <v-flex xs7>
                   <v-card-title>
                     <div>
-                      <div class="headline">{{game.title}}</div>
-                      <div class="game_designer">de {{game.designer}}</div>
-                      <div class="game_editor">par {{game.editor}}</div>
-                      <div class="ks_resume">sur {{game.plateforme}} jusqu'au {{game.dateEndKS}}</div>
+                      <div class="headline">{{ game.title }}</div>
+                      <div class="game_designer">de {{ game.designer }}</div>
+                      <div class="game_editor">par {{ game.editor }}</div>
+                      <div class="ks_resume">
+                        sur {{ game.plateforme }} jusqu'au {{ game.dateEndKS }}
+                      </div>
                     </div>
                   </v-card-title>
                 </v-flex>
                 <v-flex xs5>
-                  <v-img class="game_cover" :src="game.imageUrl" height="125px" contain></v-img>
+                  <v-img
+                    class="game_cover"
+                    :src="game.imageUrl"
+                    height="125px"
+                    contain
+                  ></v-img>
                 </v-flex>
               </v-layout>
               <v-card-actions class="primary white--text">
@@ -38,13 +45,14 @@
                   small
                   flat
                   dark
-                  :to="({
-                      name: 'game-view', 
-                      params: {
-                        gameId: game.id
-                      }
-                    })"
-                >En savoir plus</v-btn>
+                  :to="{
+                    name: 'game-view',
+                    params: {
+                      gameId: game.id
+                    }
+                  }"
+                  >En savoir plus</v-btn
+                >
                 <v-spacer></v-spacer>
                 <v-btn icon flat dark>
                   <v-icon small>favorite</v-icon>
@@ -65,26 +73,26 @@
 </template>
 
 <script>
-import GamesService from "@/services/GamesService";
+import GamesService from '@/services/GamesService'
 
 export default {
   data() {
     return {
       games: null
-    };
+    }
   },
   async mounted() {
-    this.games = (await GamesService.index()).data;
+    this.games = (await GamesService.index()).data
   },
   watch: {
-    "$route.query.search": {
+    '$route.query.search': {
       immediate: true,
       async handler(value) {
-        this.games = (await GamesService.index(value)).data;
+        this.games = (await GamesService.index(value)).data
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>
