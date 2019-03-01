@@ -29,6 +29,12 @@
               required
               :rules="[required]"
             ></v-text-field>
+            <v-text-field
+              label="Photo illustrative pour la fiche du jeu"
+              v-model="game.imageBackgroundUrl"
+              required
+              :rules="[required]"
+            ></v-text-field>
             <v-textarea
               label="Résumé du jeu"
               v-model="game.description"
@@ -98,6 +104,7 @@ export default {
         artist: null,
         editor: null,
         imageUrl: null,
+        imageBackgroundUrl: null,
         description: null,
         plateforme: null,
         dateStartKS: null,

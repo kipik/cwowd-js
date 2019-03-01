@@ -1,8 +1,8 @@
 <template>
   <v-layout justify-center>
     <v-flex>
-      <search-panel/>
-      <games-panel/>
+      <search-panel />
+      <games-panel />
     </v-flex>
   </v-layout>
 </template>

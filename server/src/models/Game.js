@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     artist: DataTypes.STRING,
     editor: DataTypes.STRING,
     imageUrl: DataTypes.STRING,
+    imageBackgroundUrl: DataTypes.STRING,
     description: DataTypes.TEXT,
     plateforme: DataTypes.STRING,
     dateStartKS: DataTypes.STRING,
