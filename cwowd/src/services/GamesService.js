@@ -9,7 +9,6 @@ export default {
     })
   },
   show(gameId) {
-    // return Api().get('games/"+gameId+"')
     return Api().get(`games/${gameId}`)
   },
   post(game) {

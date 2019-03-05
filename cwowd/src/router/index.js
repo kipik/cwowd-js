@@ -6,7 +6,9 @@ import Games from '@/components/Games/Index'
 import CreateGame from '@/components/CreateGame'
 import ViewGame from '@/components/ViewGame/Index'
 import EditGame from '@/components/EditGame'
-// import AddGame from '@/components/AddGame'
+import GamesShow from '@/components/GamesShow'
+import ShowIntro from '@/components/ShowIntro'
+import GameChoice from '@/components/GameChoice'
 
 Vue.use(Router)
 
@@ -33,11 +35,6 @@ export default new Router({
       name: 'game-create',
       component: CreateGame
     },
-    /* {
-      path: '/games/addgame',
-      name: 'games-add',
-      component: AddGame
-    }, */
     {
       path: '/games/:gameId',
       name: 'game-view',
@@ -47,6 +44,21 @@ export default new Router({
       path: '/games/:gameId/edit',
       name: 'game-edit',
       component: EditGame
+    },
+    {
+      path: '/show',
+      name: 'games-show',
+      component: GamesShow
+    },
+    {
+      path: '/show/intro',
+      name: 'intro',
+      component: ShowIntro
+    },
+    {
+      path: '/show/:gameId',
+      name: 'game-choice',
+      component: GameChoice
     },
     {
       path: '*',

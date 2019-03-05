@@ -7,7 +7,7 @@
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <v-btn flat dark :to="{ name: 'games' }">Base Jeux</v-btn>
-      <v-btn flat dark :to="{ name: 'games-add' }">Ajouter un Jeu</v-btn>
+      <v-btn flat dark :to="{ name: 'games-show' }">Vue en WiP</v-btn>
       <v-btn
         v-if="!$store.state.isUserLoggedIn"
         flat

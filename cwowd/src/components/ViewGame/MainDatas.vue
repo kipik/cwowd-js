@@ -1,5 +1,4 @@
 <template>
-  <!-- <panel title="Infos Jeu"> -->
   <v-layout>
     <panel title="Fiche jeu">
       <v-btn

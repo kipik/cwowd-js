@@ -11,8 +11,7 @@
             <div class="date-ks">Du {{ game.dateStartKS }}</div>
             <div class="date-ks">Au {{ game.dateEndKS }}</div>
             <div class="game_langue">Jeu en {{ game.langue }}</div>
-            <v-btn flat :to="game.lienKS">Lien KS</v-btn>
-            <!-- A corriger, ne link pas -->
+            <v-btn flat v-bind:href="game.lienKS">Lien KS</v-btn>
           </v-flex>
         </v-layout>
       </panel>
